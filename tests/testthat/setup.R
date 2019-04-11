@@ -16,6 +16,9 @@
 #library(dsBetaTestClient)
 #library(testthat)
 library(DSI)
+library(DSOpal)
+
+DSOpal::Opal()
 
 options(verbose=FALSE)
 
