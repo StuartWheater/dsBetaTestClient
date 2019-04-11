@@ -15,9 +15,10 @@
 
 context("dsBetaTestClient::ds.rm.o")
 
-logindata <- DSLite::setupCNSIMTest("dsBetaTest", env = environment())
+options(opal.server1="sim1", opal.server2="sim2", opal.server3="sim3")
+options(opal.table1="CNSIM.CNSIM1", opal.table2="CNSIM.CNSIM2", opal.table3="CNSIM.CNSIM3")
 options(datashield.variables=list("LAB_TSC"))
-conns <- datashield.login(logins=logindata, assign=TRUE, variables=getOption("datashield.variables", NULL))
+source("setup.R")
 
 #
 # Tests
@@ -34,6 +35,6 @@ test_that("mean values [combine]", {
 # Tear down
 #
 
-datashield.logout(conns)
+source("teardown.R")
 
 context("dsBetaTestClient::ds.rm.o done")

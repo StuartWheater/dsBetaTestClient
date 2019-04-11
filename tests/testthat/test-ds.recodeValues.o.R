@@ -15,9 +15,10 @@
 
 context("dsBetaTestClient::ds.recodeValues.o")
 
-logindata <- DSLite::setupSURVIVALTest("dsBetaTest", env = environment())
+options(opal.server1="survival1", opal.server2="survival2", opal.server3="survival3")
+options(opal.table1='SURVIVAL.EXPAND_WITH_MISSING1', opal.table2='SURVIVAL.EXPAND_WITH_MISSING2', opal.table3='SURVIVAL.EXPAND_WITH_MISSING3')
 options(datashield.variables=list('survtime', 'time.id', 'female', 'age.60'))
-conns <- datashield.login(logins=logindata, assign=TRUE, variables=getOption("datashield.variables", NULL))
+source("setup.R")
 
 #
 # Tests
@@ -25,7 +26,7 @@ conns <- datashield.login(logins=logindata, assign=TRUE, variables=getOption("da
 
 context("dsBetaTestClient::ds.recodeValues.o(...) valid arguments")
 test_that("recodeValues_checks", {
-    res <- ds.recodeValues.o(var.name="D$age.60", values2replace.vector=c(-1,-6), new.values.vector=c(-10,-16), datasources=conns)
+    res <- ds.recodeValues.o(var.name="D$age.60", values2replace.vector=c(-1,-6), new.values.vector=c(-10,-16), datasources=opals)
 
     expect_equal(res$is.object.created, "A data object <D$age.60_recoded> has been created in all specified data sources")
     expect_equal(res$validity.check, "<D$age.60_recoded> appears valid in all sources")
@@ -44,6 +45,6 @@ test_that("recodeValues_erros", {
 # Tear down
 #
 
-datashield.logout(conns)
+source("teardown.R")
 
 context("dsBetaTestClient::ds.recodeValues.o done")

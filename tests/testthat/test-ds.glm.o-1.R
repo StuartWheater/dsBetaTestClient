@@ -15,9 +15,10 @@
 
 context("dsBetaTestClient::ds.glm.o 1")
 
-logindata <- DSLite::setupSURVIVALTest("dsBetaTest", env = environment())
+options(opal.server1="survival1", opal.server2="survival2", opal.server3="survival3")
+options(opal.table1='SURVIVAL.EXPAND_WITH_MISSING1', opal.table2='SURVIVAL.EXPAND_WITH_MISSING2', opal.table3='SURVIVAL.EXPAND_WITH_MISSING3')
 options(datashield.variables=list('survtime', 'time.id', 'female', 'age.60'))
-conns <- datashield.login(logins=logindata, assign=TRUE, variables=getOption("datashield.variables", NULL))
+source("setup.R")
 
 #
 # Tests
@@ -44,6 +45,6 @@ test_that("glm_errors", {
 # Tear down
 #
 
-datashield.logout(conns)
+source("teardown.R")
 
 context("dsBetaTestClient::ds.glm.o 1 done")
