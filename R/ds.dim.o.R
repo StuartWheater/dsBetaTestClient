@@ -54,7 +54,7 @@ ds.dim.o <- function(x=NULL, type='both', checks=FALSE, datasources=NULL) {
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- datashield.connections_find()
   }
   
   if(is.null(x)){
