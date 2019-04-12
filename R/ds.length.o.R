@@ -48,7 +48,7 @@ ds.length.o = function(x=NULL, type='both', checks='FALSE', datasources=NULL){
   #MODULE 1: IDENTIFY DEFAULT OPALS  											                        		#
   # if no opal login details are provided look for 'opal' objects in the environment  #
   if(is.null(datasources)){														                               	#
-    datasources <- findLoginObjects()							                          					#
+    datasources <- datashield.connections_find()							                          					#
   }																                                          					#						
   ##################################################################################### 
   
