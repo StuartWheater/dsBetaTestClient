@@ -20,6 +20,7 @@ steps:
     sudo apt-get update
     sudo rm -f puppet5-release-xenial.deb
 
+    sudo apt-get install daemon -y
     sudo apt-get install puppet-agent -y
 
     sudo apt-get clean all
