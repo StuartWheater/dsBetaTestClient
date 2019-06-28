@@ -102,5 +102,6 @@ steps:
     git add docs/latest/index.html
     git commit -m "adding new test_results file"
     git push
+    exit 0
   displayName: 'Parse test results'
   condition: always()
