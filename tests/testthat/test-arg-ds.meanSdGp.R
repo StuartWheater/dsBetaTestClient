@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2014 OBiBa,
-#               2019 University of Newcastle upon Tyne. All rights reserved.
+#               2018 University of Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -13,27 +13,24 @@
 # Set up
 #
 
-# context("dsBetaTestClient::ds.tapply.assign.o::smk")
+# context("dsBetaTestClient::ds.meanSdGp::args test")
 
 source("connection_to_datasets/init_all_datasets.R")
 source("connection_to_datasets/init_smk_datasets.R")
 
-connect.smk.dataset.sim(list("LAB_TSC", "GENDER"))
+connect.smk.dataset.sim(list("LAB_TSC"))
 
 #
 # Tests
 #
 
-context("ds.tapply.assign.o::smk")
-test_that("simplest 'ds.tapply.assign.o'", {
-    list <- ds.tapply.assign.o(X.name='D$LAB_TSC', INDEX.names=c('D$GENDER'), FUN.name='sum', newobj='temp.obj')
-
-    expect_true(length(list) == 0)
+context("ds.meanSdGp::arg::test errors")
+test_that("meanSdGp_erros", {
+    expect_error(ds.meanSdGp(), "Please provide the name of the input vector!", fixed=TRUE)
 })
 
 #
-# Tear down
+# Done
 #
 
-# context("dsBetaTestClient::ds.tapply.assign.o::smk done")
-
+# context("dsBetaTestClient::ds.meanSdGp::arg done")

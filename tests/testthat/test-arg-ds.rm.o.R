@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2014 OBiBa,
-#               2019 University of Newcastle upon Tyne. All rights reserved.
+#               2018 University of Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -13,27 +13,25 @@
 # Set up
 #
 
-# context("dsBetaTestClient::ds.tapply.assign.o::smk")
+# context("dsBetaTestClient::ds.rm.o::arg")
 
 source("connection_to_datasets/init_all_datasets.R")
 source("connection_to_datasets/init_smk_datasets.R")
 
-connect.smk.dataset.sim(list("LAB_TSC", "GENDER"))
+connect.smk.dataset.survival(list("survtime", "time.id", "female"))
 
 #
 # Tests
 #
 
-context("ds.tapply.assign.o::smk")
-test_that("simplest 'ds.tapply.assign.o'", {
-    list <- ds.tapply.assign.o(X.name='D$LAB_TSC', INDEX.names=c('D$GENDER'), FUN.name='sum', newobj='temp.obj')
+context("ds.rm.o::arg::test errors")
 
-    expect_true(length(list) == 0)
+test_that("ds.rm.o erros", {
+    expect_error(ds.rm.o(), "Please provide the name of the object to be deleted (eg 'object.name') as the x.name argument", fixed=TRUE)
 })
 
 #
-# Tear down
+# Done
 #
 
-# context("dsBetaTestClient::ds.tapply.assign.o::smk done")
-
+# context("dsBetaTestClient::ds.rm.o::arg done")

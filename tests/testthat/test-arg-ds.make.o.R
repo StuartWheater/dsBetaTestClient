@@ -13,39 +13,24 @@
 # Set up
 #
 
-# context("dsBetaTestClient::ds.glm.o 1::smk")
+# context("dsBetaTestClient::ds.make.o:args test")
 
 source("connection_to_datasets/init_all_datasets.R")
 source("connection_to_datasets/init_smk_datasets.R")
 
-connect.smk.dataset.survival(list("survtime", "time.id", "female", "age.60"))
+connect.smk.dataset.sim(list("LAB_TSC"))
 
 #
 # Tests
 #
 
-context("ds.glm.o::smk::poisson")
-
-# mod.D<-ds.glm.o("D$survtime~D$time.id+D$female+D$age.60",family="poisson")
-mod.D<-ds.glm.o("D$survtime~1+D$time.id+D$female",family="poisson")
-
-print("----")
-print(mod.D)
-print("----")
-
-output.D<-c(mod.D$coefficients[,1],mod.D$coefficients[,2])
-
-test_that("glm_poisson", {
-    expect_equal(ds.ls()$sim1[2],output.D,output.R)
-})
-
-context("ds.glm.o::smk::errors")
-test_that("glm_errors", {
-    expect_error(ds.glm.o(), "argument is of length zero", fixed=TRUE)
+context("ds.make.o::arg::test errors")
+test_that("make_erros", {
+    expect_error(ds.make.o(), "Please give the name of object to assign or an expression to evaluate and assign.!\n", fixed=TRUE)
 })
 
 #
 # Done
 #
 
-# context("dsBetaTestClient::ds.glm.o 1::smk done")
+# context("dsBetaTestClient::ds.make.o:arg done")

@@ -13,7 +13,7 @@
 # Set up
 #
 
-# context("dsBetaTestClient::ds.unList.o:args test")
+# context("dsBetaTestClient::ds.unList.o::args test")
 
 source("connection_to_datasets/init_all_datasets.R")
 source("connection_to_datasets/init_smk_datasets.R")
@@ -33,4 +33,4 @@ test_that("unList_erros", {
 # Done
 #
 
-# context("dsBetaTestClient::ds.unList.o:arg done")
+# context("dsBetaTestClient::ds.unList.o::arg done")

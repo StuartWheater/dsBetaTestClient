@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2014 OBiBa,
-#               2019 University of Newcastle upon Tyne. All rights reserved.
+#               2018 University of Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -13,27 +13,26 @@
 # Set up
 #
 
-# context("dsBetaTestClient::ds.tapply.assign.o::smk")
+# context("dsBetaTestClient::ds.matrixMult:args test")
 
 source("connection_to_datasets/init_all_datasets.R")
 source("connection_to_datasets/init_smk_datasets.R")
 
-connect.smk.dataset.sim(list("LAB_TSC", "GENDER"))
+connect.smk.dataset.sim(list("LAB_TSC"))
 
 #
 # Tests
 #
 
-context("ds.tapply.assign.o::smk")
-test_that("simplest 'ds.tapply.assign.o'", {
-    list <- ds.tapply.assign.o(X.name='D$LAB_TSC', INDEX.names=c('D$GENDER'), FUN.name='sum', newobj='temp.obj')
+context("ds.matrixMult::arg::test errors")
+test_that("matrixMult_erros", {
+    res <- ds.matrixMult()
 
-    expect_true(length(list) == 0)
+    expect_equal(res, "Error: Please provide the name of the matrix representing M1")
 })
 
 #
-# Tear down
+# Done
 #
 
-# context("dsBetaTestClient::ds.tapply.assign.o::smk done")
-
+# context("dsBetaTestClient::ds.matrixMult:arg done")
