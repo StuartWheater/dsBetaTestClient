@@ -1,6 +1,6 @@
 schedules:
-  - cron: "0 0 * * *"
-    displayName: Daily midnight build
+  - cron: "0 3 * * *"
+    displayName: Nightly build
     branches:
       include:
       - master
@@ -10,7 +10,7 @@ schedules:
 jobs:
 - job: DataSHIELD_CI
 
-  timeoutInMinutes: 90
+  timeoutInMinutes: 120
 
   pool:
     vmImage: 'Ubuntu 16.04'
@@ -62,7 +62,7 @@ jobs:
 
   - bash: |
       R -q -e "library('devtools'); devtools::check(args = c('--no-examples'))" | tee azure-pipelines_check.Rout
-      grep --quiet "0 error" azure-pipelines_check.Rout && grep --quiet "0 warnings" azure-pipelines_check.Rout && grep --quiet "0 note" azure-pipelines_check.Rout
+      grep --quiet "^0 errors" azure-pipelines_check.Rout && grep --quiet " 0 warnings" azure-pipelines_check.Rout && grep --quiet " 0 notes" azure-pipelines_check.Rout
     displayName: 'Devtools checks'
     condition: always()
 
